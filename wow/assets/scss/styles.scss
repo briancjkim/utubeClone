@@ -1,0 +1,16 @@
+@import "config/variable";
+@import "config/reset.scss";
+@import "main.scss";
+@import "config/utils.scss";
+
+@import "partials/header.scss";
+@import "partials/footer.scss";
+@import "partials/form.scss";
+@import "partials/social.login.scss";
+@import "partials/videoBlock.scss";
+@import "partials/videoPlayer.scss";
+@import "partials/videoRecorder.scss";
+
+@import "pages/home.scss";
+@import "pages/vidoeDetail.scss";
+@import "pages/userProfile.scss";
