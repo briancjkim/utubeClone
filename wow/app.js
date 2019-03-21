@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
+import flash from "express-flash";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
@@ -39,6 +40,7 @@ app.use(
     store: new CookieStore({ mongooseConnection: mongoose.connection })
   })
 );
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 

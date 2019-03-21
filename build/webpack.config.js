@@ -10,7 +10,7 @@ var MODE = process.env.WEBPACK_ENV;
 var ENTRY_FILE = path.resolve(__dirname, "assets", "js", "main.js");
 var OUTPUT_DIR = path.join(__dirname, "static");
 var config = {
-  entry: ENTRY_FILE,
+  entry: ["@babel/polyfill", ENTRY_FILE],
   mode: MODE,
   module: {
     rules: [{

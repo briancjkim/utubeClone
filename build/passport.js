@@ -19,13 +19,13 @@ _passport.default.use(_User.default.createStrategy());
 _passport.default.use(new _passportGithub.default({
   clientID: process.env.GH_ID,
   clientSecret: process.env.GH_SECRET,
-  callbackURL: "http://localhost:4000".concat(_routes.default.githubCallback)
+  callbackURL: process.env.PRODUCTION ? "https://utubeclone.herokuapp.com".concat(_routes.default.githubCallback) : "http://localhost:4000".concat(_routes.default.githubCallback)
 }, _userController.githubLoginCallback));
 
 _passport.default.use(new _passportFacebook.default({
   clientID: process.env.FB_ID,
   clientSecret: process.env.FB_SECRET,
-  callbackURL: "https://a9078cf9.ngrok.io".concat(_routes.default.facebookCallback),
+  callbackURL: process.env.PRODUCTION ? "https://utubeclone.herokuapp.com".concat(_routes.default.facebookCallback) : "http://localhost:4000".concat(_routes.default.facebookCallback),
   profileFields: ["id", "displayName", "photos", "email"],
   scope: ["public_profile", "email"]
 }, _userController.facebookLoginCallback));

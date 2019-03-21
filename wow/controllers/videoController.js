@@ -100,8 +100,10 @@ export const postEditVideo = async (req, res) => {
   } = req;
   try {
     await Video.findOneAndUpdate({ _id: id }, { title, description });
+    req.flash("success", "Edited video");
     res.redirect(routes.videoDetail(id));
   } catch (error) {
+    req.flash("error", "Can't edit video");
     res.redirect(routes.home);
   }
 };
@@ -137,8 +139,10 @@ export const deleteVideo = async (req, res) => {
       await Video.findOneAndRemove({ _id: id });
       creator.videos.remove(video.id);
       await creator.save();
+      req.flash("success", "Deleted video");
     }
   } catch (error) {
+    req.flash("error", "Can't delete video");
     console.log(error);
   }
   res.redirect(routes.home);

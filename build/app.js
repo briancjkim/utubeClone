@@ -17,6 +17,8 @@ var _morgan = _interopRequireDefault(require("morgan"));
 
 var _path = _interopRequireDefault(require("path"));
 
+var _expressFlash = _interopRequireDefault(require("express-flash"));
+
 var _userRouter = _interopRequireDefault(require("./routers/userRouter"));
 
 var _videoRouter = _interopRequireDefault(require("./routers/videoRouter"));
@@ -63,6 +65,7 @@ app.use((0, _expressSession.default)({
     mongooseConnection: _mongoose.default.connection
   })
 }));
+app.use((0, _expressFlash.default)());
 app.use(_passport.default.initialize());
 app.use(_passport.default.session());
 app.use(_middlewares.localsMiddleware);
