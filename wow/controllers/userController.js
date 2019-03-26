@@ -27,6 +27,9 @@ export const postJoin = async (req, res, next) => {
         email
       });
       await User.register(user, password);
+      user.avatarUrl =
+        "https://s3-ap-southeast-2.amazonaws.com/utubeclone/avatar/01a2dd74900b14a3789e069db7e8f778";
+      await user.save();
       next();
     } catch (error) {
       console.log(error);
@@ -81,21 +84,23 @@ export const postEditProfile = async (req, res) => {
     if (file) {
       // Delete previous avatar on aws s3
       const user = await User.findById(req.user.id);
-      const avatarUrlArr = user.avatarUrl.split("/");
-      const avatarUrl = avatarUrlArr[avatarUrlArr.length - 1];
-      const params = {
-        Bucket: "utubeclone/avatar",
-        Key: avatarUrl
-      };
-      s3.deleteObject(params, (err, data) => {
-        if (err) {
-          console.log("delete file on s3 failed");
-          console.log(err);
-        } else {
-          console.log("delete file on s3 succeded");
-          console.log(data);
-        }
-      });
+      if (user.avatarUrl) {
+        const avatarUrlArr = user.avatarUrl.split("/");
+        const avatarUrl = avatarUrlArr[avatarUrlArr.length - 1];
+        const params = {
+          Bucket: "utubeclone/avatar",
+          Key: avatarUrl
+        };
+        s3.deleteObject(params, (err, data) => {
+          if (err) {
+            console.log("delete file on s3 failed");
+            console.log(err);
+          } else {
+            console.log("delete file on s3 succeded");
+            console.log(data);
+          }
+        });
+      }
     }
 
     await User.findByIdAndUpdate(req.user.id, {
