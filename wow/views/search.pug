@@ -7,7 +7,7 @@ block content
     
   .search__videos
     if(videos.length === 0)
-      h5 No videos found
+      h5.search__videos__info No videos found
     each item in videos
       +videoBlock({
         title:item.title,

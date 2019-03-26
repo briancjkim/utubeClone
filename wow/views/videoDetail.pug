@@ -29,10 +29,10 @@ block content
                     span#jsCommentNumber #{video.comments.length}
                     |   comments
             form.add__comment#jsAddComment
-                input(type="text",placeholder="Add a comment")
+                input(type="text",placeholder=loggedUser? "Add a comment": "Please Log in to add a comment" disabled= !loggedUser)
             ul.video__comments-list#jsCommentList
                 each comment in video.comments.reverse()
                     li
                         span=comment.text
-                        if(comment.creator.id === loggedUser.id)
+                        if loggedUser && (comment.creator.id === loggedUser.id)
                             i.fas.fa-backspace.jsDeleteBtn(class=comment.id)
