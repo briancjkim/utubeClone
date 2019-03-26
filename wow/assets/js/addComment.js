@@ -53,9 +53,10 @@ const sendComment = async comment => {
     }
   });
   if (response.status === 200) {
+    const classLength = loggedUserInfo.classList.length;
     const userId = loggedUserInfo.classList[0];
     const userName = loggedUserInfo.classList[1];
-    const avatarUrl = loggedUserInfo.classList[2];
+    const avatarUrl = loggedUserInfo.classList[classLength - 1];
     addComment(comment, userId, userName, avatarUrl);
   }
 };
