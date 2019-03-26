@@ -47,7 +47,8 @@
     .video__comments-list {
       margin-top: 50px;
       li {
-        position: relative;
+        display: grid;
+        grid-template-columns: 30px 1fr 30px;
         background-color: #3498db;
         color: white;
         padding: 15px;
@@ -56,10 +57,26 @@
         &:not(:last-child) {
           margin-bottom: 15px;
         }
+        .commentAvatar {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          position: relative;
+        }
+        .commentWrapper {
+          padding-left: 10px;
+          display: flex;
+          flex-direction: column;
+          font-size: 15px;
+          .commentUsername {
+            font-weight: 500;
+            margin-bottom: 10px;
+          }
+        }
         .jsDeleteBtn {
-          position: absolute;
-          right: 10px;
           cursor: pointer;
+          align-self: center;
+          justify-content: center;
         }
       }
     }
