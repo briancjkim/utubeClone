@@ -27,8 +27,7 @@ export const postJoin = async (req, res, next) => {
         email
       });
       await User.register(user, password);
-      user.avatarUrl =
-        "https://s3-ap-southeast-2.amazonaws.com/utubeclone/avatar/01a2dd74900b14a3789e069db7e8f778";
+      user.avatarUrl = process.env.DEFAULT_AVATAR_URL;
       await user.save();
       next();
     } catch (error) {
