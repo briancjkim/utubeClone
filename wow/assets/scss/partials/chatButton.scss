@@ -1,0 +1,140 @@
+.chat-button-container {
+  z-index: 1;
+  position: relative;
+
+  .chat-button {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    vertical-align: center;
+    bottom: 0px;
+    right: 20px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 50px;
+    padding: 50px;
+    background-color: $red;
+    color: white;
+    text-align: center;
+    opacity: 0.5;
+    &:hover {
+      opacity: 1;
+      transition: opacity 1s linear;
+    }
+    & span {
+      position: relative;
+      top: -25px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      vertical-align: center;
+    }
+  }
+}
+
+.chat-container {
+  position: relative;
+  .chat {
+    visibility: hidden;
+    height: 0;
+    opacity: 0;
+    transition: opacity 1s linear;
+  }
+  .chat.active {
+    visibility: visible;
+    height: auto;
+    transition: visibility 0.7s opacity 0.7s linear;
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    position: absolute;
+    bottom: 0px;
+    right: 20px;
+    width: 300px;
+    z-index: 2;
+    box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+
+    .chat-header {
+      padding: 10px 10px;
+      font-size: 15px;
+      display: flex;
+      flex-direction: column;
+      background: #ecf0f1;
+      box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.5);
+      border-radius: 10px 10px 0 0;
+      border-bottom: 2px solid #f9f9f9;
+
+      .chat-title {
+        font-weight: 500;
+        align-self: center;
+        justify-self: center;
+        padding-bottom: 10px;
+      }
+      .chat-close {
+        align-self: flex-end;
+        font-size: 15px;
+        cursor: pointer;
+      }
+    }
+    .chat-window {
+      height: 320px;
+      overflow: scroll;
+      background: #f9f9f9;
+      .output {
+        display: flex;
+        flex-direction: column;
+        p {
+          padding: 14px 0px;
+          margin: 0 20px;
+          border-bottom: 1px solid #e9e9e9;
+          color: #555;
+        }
+        .output__today {
+          display: inline-block;
+          width: 100%;
+          margin: 20px 0;
+          text-align: center;
+          font-weight: 500;
+          color: #7f8c8d;
+        }
+
+        strong {
+          color: $red;
+          margin-right: 10px;
+        }
+      }
+      .feedback {
+        text-align: center;
+        color: #aaa;
+        padding: 14px 0px;
+        margin: 0 20px;
+      }
+    }
+    input {
+      padding: 10px 20px;
+      box-sizing: border-box;
+      background: #eee;
+      border: 0;
+      display: block;
+      width: 100%;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      font-family: Nunito;
+      font-size: 16px;
+    }
+    button {
+      background: $red;
+      color: #fff;
+      font-size: 18px;
+      border: 0;
+      padding: 12px 0;
+      width: 100%;
+      border-radius: 0 0 10px 10px;
+    }
+  }
+}

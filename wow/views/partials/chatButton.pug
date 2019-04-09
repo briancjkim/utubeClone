@@ -1,0 +1,24 @@
+.chat-button-container
+  button.chat-button
+   span
+        i.far.fa-comment.dots
+.chat-container
+  .chat
+    .chat-header
+      span.chat-close
+        i.fas.fa-times
+      h2.chat-title Chat with Utube team
+    .chat-window
+      .output
+        span.output__today today
+        p 
+          strong Brian 
+          |   Ask anything to Utube developer team!
+          
+      .feedback
+        <p><em>Brian is typing...</em></p>
+
+    input.handle(type="text" placeholder="NickName" value= loggedUser && loggedUser ? `${loggedUser.name}` :"NickName")
+    input.message(type="text" placeholder="Message")
+    button.sendMessage send
+
