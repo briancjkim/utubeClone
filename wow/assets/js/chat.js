@@ -1,8 +1,6 @@
 // make connection from client
-const serverUrl = process.env.PRODUCTION
-  ? "https://utubeclone.herokuapp.com/"
-  : "http://localhost:4000";
-const socket = io.connect(serverUrl);
+
+const socket = io.connect("https://utubeclone.herokuapp.com/");
 const chatButton = document.querySelector(".chat-button-container");
 const closeButton = document.querySelector(".chat-close");
 const sendButton = document.querySelector(".sendMessage");
